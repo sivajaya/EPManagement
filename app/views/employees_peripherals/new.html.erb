@@ -1,4 +1,14 @@
+<%= form_for @employeesperipherals  do |f| %>
 
-<%= render 'form' %>
 
-<%= link_to 'Back', employees_path %>
+  <div class="field">
+  <%= f.label :employee_id %>
+    <%= collection_select(:employee_peripheral, :employee_id, Employee.all,
+                  :id, :name,
+                 {:prompt => 'Please select the employee'}),:id1 =>'employee_peripheral_employee_id' %> <br>     
+  </div>
+  <% end %>
+<script type="text/javascript">
+  var a =$('#employee_peripheral_employee_id').val()
+</script>
+<%= link_to 'Back', employees_path(:id1) %>

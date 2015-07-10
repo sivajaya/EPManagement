@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
   resources :peripherals
   resources :employees
-   resources :employees_peripherals
+  resources :employees_peripherals
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  #root 'employees_peripherals#new'
+   root 'employees_peripherals#index'
  
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
