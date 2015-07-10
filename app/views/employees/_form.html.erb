@@ -1,0 +1,30 @@
+<%= form_for(@employee) do |f| %>
+  <% if @employee.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@employee.errors.count, "error") %> prohibited this employee from being saved:</h2>
+
+      <ul>
+      <% @employee.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+   
+  <h2>Employee Peripherals</h2>
+  <% Peripheral.all.each do |peripheral| %>
+    <div>
+      <%= check_box_tag :peripheral_ids, peripheral.id, @employee.peripherals.include?(peripheral), :name => 'employee[peripheral_ids][]' %>
+      <%= label_tag :peripheral_ids, peripheral.name %>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

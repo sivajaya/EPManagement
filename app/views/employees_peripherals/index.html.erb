@@ -1,0 +1,18 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Employees Peripherals</h1>
+
+  <div class="field">
+    <%= collection_select(:employee_peripheral, :employee_id, Employee.all,
+                  :id, :name,
+                 {:prompt => 'Please select the employee'}) %> <br>
+            <br>      
+            
+    <% Peripheral.all.each do |peripheral| %>
+    <div>
+      <%= check_box_tag :peripheral_ids, peripheral.id, :name => 'employee[peripheral_ids][]' %>
+      <%= label_tag :peripheral_ids, peripheral.name %>
+    </div>
+  <% end %>
+  </div>
+  

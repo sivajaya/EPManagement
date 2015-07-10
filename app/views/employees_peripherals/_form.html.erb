@@ -1,0 +1,32 @@
+<%= form_for @employeesperipherals, as: :employeesperipherals, url: employees_peripherals_path do |f| %>
+  <% if @employees_peripheral.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@employees_peripheral.errors.count, "error") %> prohibited this employees_peripheral from being saved:</h2>
+
+      <ul>
+      <% @employees_peripheral.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+    <div class="field">
+     <%= f.label :employee_id %><br> 
+     <%= collection_select(:employee_peripheral, :employee_id, Employee.all,
+                  :id, :employee_name,
+                 {:prompt => 'Please select the employee'}) %>
+    </div>
+
+  <h2>Employees_peripheral Peripherals</h2>
+  <% Peripheral.all.each do |peripheral| %>
+    <div>
+      <%= check_box_tag :peripheral_ids, peripheral.id, @employees_peripheral.peripherals.include?(peripheral), :name => 'employee[peripheral_ids][]' %>
+      <%= label_tag :peripheral_ids, peripheral.name %>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Peripherals</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @peripherals.each do |peripheral| %>
+      <tr>
+        <td><%= peripheral.name %></td>
+        <td><%= link_to 'Show', peripheral %></td>
+        <td><%= link_to 'Edit', edit_peripheral_path(peripheral) %></td>
+        <td><%= link_to 'Destroy', peripheral, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Peripheral', new_peripheral_path %>
